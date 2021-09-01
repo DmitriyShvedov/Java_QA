@@ -18,8 +18,12 @@ public class Humen {
     public static void main(String[] args) {
 
         Humen h1 = new Humen(1, "Alime");
+        Humen h2 = new Humen(2, "Dmitriy");
         h1.setName("Dmitriy");
+        h2.setName("kolya");
         System.out.println(h1.getName());
+        System.out.println(h2.getName());
+
     }
 
 }
