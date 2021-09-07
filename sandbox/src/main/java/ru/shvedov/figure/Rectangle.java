@@ -1,3 +1,5 @@
+package ru.shvedov.figure;
+
 public class Rectangle {
 
     public double a;

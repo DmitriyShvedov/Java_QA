@@ -1,3 +1,5 @@
+package ru.shvedov.figure;
+
 public class Square {
 
     public double l;

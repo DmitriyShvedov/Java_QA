@@ -1,4 +1,4 @@
-import java.lang.invoke.StringConcatFactory;
+package ru.shvedov.experiment;
 
 public class Humen {
     private int id;

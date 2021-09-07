@@ -1,3 +1,8 @@
+package ru.shvedov.figure;
+
+import ru.shvedov.figure.Rectangle;
+import ru.shvedov.figure.Square;
+
 public class Calcul {
 
     public static void main(String[] args) {
