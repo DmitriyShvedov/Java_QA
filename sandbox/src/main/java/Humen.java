@@ -30,6 +30,8 @@ public class Humen {
     }
 
 
+
+
     public static void main(String[] args) {
 
         Humen h1 = new Humen(1, "Alime");
