@@ -6,13 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="sandbox" />
-        <module name="src" />
+        <module name="WebTestsEducation" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="sandbox (1)" target="16" />
-      <module name="src" target="16" />
-    </bytecodeTargetLevel>
   </component>
 </project>
