@@ -19,11 +19,11 @@ public class Authorization extends ConfigWebDriver {
         return passAuth;
     }
 
-
-    public void auth(Authorization obj){
-        driver.findElement(By.xpath("//*[@id=\"index_email\"]")).sendKeys(obj.getLoginAuth());
-        driver.findElement(By.xpath("//*[@id=\"index_pass\"]")).sendKeys(obj.getPassAuth());
+    public void authVk(){
+        driver.findElement(By.xpath("//*[@id=\"index_email\"]")).sendKeys(getLoginAuth());
+        driver.findElement(By.xpath("//*[@id=\"index_pass\"]")).sendKeys(getPassAuth());
         driver.findElement(By.xpath("//*[@id=\"index_login_button\"]")).click();
     }
+
 
 }
