@@ -3,11 +3,11 @@ package shvedov.qa.vk;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-public class Authorization extends ConfigWebDriver {
+public class AuthorizationVK extends ConfigWebDriver {
     private String passAuth;
     private String loginAuth;
 
-    public Authorization(String login, String pass){
+    public AuthorizationVK(String login, String pass){
         this.loginAuth = login;
         this.passAuth = pass;
     }

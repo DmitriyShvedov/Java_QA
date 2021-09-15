@@ -1,7 +1,6 @@
 package shvedov.qa.vk;
 
 import org.openqa.selenium.By;
-
 import java.util.concurrent.TimeUnit;
 
 public class MessageVkTo extends ConfigWebDriver {
@@ -23,12 +22,14 @@ public class MessageVkTo extends ConfigWebDriver {
 
     public void sendMessTo(){
 
-        driver.findElement(By.xpath("/html/body/div[12]/div/div/div[2]/div[1]/div/nav/ol/li[4]/a/span")).click();
-        driver.findElement(By.xpath("//*[@id=\"s_search\"]")).sendKeys(getName());
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("/html/body/div[12]/div/div/div[2]/div[2]/div[2]/div/div/div/div/div[2]/div/div[2]/div[4]/div[1]/div/div/div[3]/div[4]/a\n")).click();
-        driver.findElement(By.xpath("//*[@id=\"mail_box_editable\"]")).sendKeys(getMessage());
-        driver.findElement(By.xpath("//*[@id=\"mail_box_send\"]\n")).click();
+        driver.findElement(By.xpath("//li[@id='l_fr']/a/span")).click();
+        driver.findElement(By.id("s_search")).clear();
+        driver.findElement(By.id("s_search")).sendKeys(getName());
+        driver.findElement(By.linkText("Написать сообщение")).click();
+        driver.findElement(By.id("mail_box_editable")).click();
+        driver.findElement(By.id("mail_box_editable")).sendKeys(getMessage());
+        driver.findElement(By.id("mail_box_send")).click();
+        driver.findElement(By.xpath("//li[@id='l_pr']/a/span")).click();
 
     }
 }
