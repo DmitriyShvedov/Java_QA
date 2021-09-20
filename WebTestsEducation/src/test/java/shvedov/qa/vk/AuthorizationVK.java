@@ -1,9 +1,8 @@
 package shvedov.qa.vk;
 
 import org.openqa.selenium.By;
-import org.testng.annotations.Test;
 
-public class AuthorizationVK extends ConfigWebDriver {
+public class AuthorizationVK extends TestBaseConfig {
     private String passAuth;
     private String loginAuth;
 

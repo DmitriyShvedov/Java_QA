@@ -2,11 +2,18 @@ package shvedov.qa.vk;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-public class ConfigWebDriver {
+public class TestBaseConfig {
 
     public static WebDriver driver;
 
@@ -18,10 +25,16 @@ public class ConfigWebDriver {
 
     }
 
-    protected static void waitSecond(int time){
-        driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
+    protected static void waitObjXpath(String obj){
+        WebElement e = (new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(obj))));
     }
 
+    protected static void waitSecond(int time){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    }
+
+    @AfterTest
     protected static void closeBrowser(){
         driver.quit();
     }

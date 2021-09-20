@@ -1,9 +1,8 @@
 package shvedov.qa.vk;
 
 import org.openqa.selenium.By;
-import java.util.concurrent.TimeUnit;
 
-public class MessageVkTo extends ConfigWebDriver {
+public class MessageVkTo extends TestBaseConfig {
 
     String Name;
     String Message;
