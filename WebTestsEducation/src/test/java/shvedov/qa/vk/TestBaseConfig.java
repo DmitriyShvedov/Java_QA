@@ -30,6 +30,12 @@ public class TestBaseConfig {
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(obj))));
     }
 
+    protected static WebElement findByElementXpath(String obj){
+        WebElement e = driver.findElement(By.xpath(obj));
+        return e;
+    }
+
+
     protected static void waitSecond(int time){
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
