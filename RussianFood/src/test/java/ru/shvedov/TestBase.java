@@ -34,15 +34,18 @@ public class TestBase {
     }
 
     public void loginIn(Authorization loginIN){
-        driver.findElement(By.xpath("/html/body/div[1]/div/div/table[1]/tbody/tr/td[1]/table/tbody/tr[1]/td/div/a/img")).click();
+        clickOnMainSite();
+        screenshot("step 1");
         driver.findElement(By.xpath("/html/body/div[1]/div/div/table[3]/tbody/tr[1]/td[1]/noindex/div[1]/div[1]/span[2]/span/i/i")).click();
+        screenshot("step 2");
         driver.findElement(By.xpath("/html/body/div[1]/div/div/table[3]/tbody/tr[1]/td[1]/noindex/div[1]/div[2]/form/div/p[1]/input")).sendKeys(loginIN.getLogin());
         driver.findElement(By.xpath("/html/body/div[1]/div/div/table[3]/tbody/tr[1]/td[1]/noindex/div[1]/div[2]/form/div/p[2]/input")).sendKeys(loginIN.getPassword());
         driver.findElement(By.xpath("/html/body/div[1]/div/div/table[3]/tbody/tr[1]/td[1]/noindex/div[1]/div[2]/form/input")).click();
     }
 
-
-
+    protected void clickOnMainSite() {
+        driver.findElement(By.xpath("/html/body/div[1]/div/div/table[1]/tbody/tr/td[1]/table/tbody/tr[1]/td/div/a/img")).click();
+    }
 
 
     public void registration(){
@@ -58,7 +61,6 @@ public class TestBase {
         //driver.findElement(By.className("recaptcha-checkbox-border")).click(); капча
         waitSecond(5);
     }
-
 
 
     private void submitNewRecipe() {
@@ -104,4 +106,7 @@ public class TestBase {
     }
 
 
+    protected void clickOnAddRecipe() {
+        driver.findElement(By.xpath("/html/body/div[1]/div/div/table[1]/tbody/tr/td[3]/div/table/tbody/tr/td/div[2]/a")).click();
+    }
 }

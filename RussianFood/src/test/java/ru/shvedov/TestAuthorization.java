@@ -9,5 +9,6 @@ public class TestAuthorization extends TestBase {
     @Test
     public void testLoginIN(){
         loginIn(testLoginWrong);
+        screenshot("testLoginWrong");
     }
 }

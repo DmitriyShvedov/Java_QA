@@ -3,7 +3,7 @@ package ru.shvedov;
 import org.openqa.selenium.*;
 import org.testng.annotations.Test;
 
-public class AddRecipe extends TestBase {
+public class TestAddRecipe extends TestBase {
 
 
     RecipeData test = new RecipeData("очень вкусно", "главное полезно","Картошка");
@@ -13,7 +13,7 @@ public class AddRecipe extends TestBase {
         loginIn(authLogin);
         clickOnAddRecipe();
         initNewRecipe("7", "1000", "50", "55", test);
-        screenshot("compite");
+        screenshot("TestAddRecipe");
         //submitNewReciept();
 
     }
@@ -64,10 +64,6 @@ public class AddRecipe extends TestBase {
         driver.findElement(By.xpath("//*[@id=\"ready_time\"]")).sendKeys(cookingDuration);
         //time potratil
         driver.findElement(By.xpath("//*[@id=\"prep_time\"]")).sendKeys(myCookingDuration);
-    }
-
-    private void clickOnAddRecipe() {
-        driver.findElement(By.xpath("/html/body/div[1]/div/div/table[1]/tbody/tr/td[3]/div/table/tbody/tr/td/div[2]/a")).click();
     }
 
 
