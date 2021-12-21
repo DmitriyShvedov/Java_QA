@@ -1,6 +1,7 @@
-package ru.shvedov;
+package ru.shvedov.tests;
 
 import org.testng.annotations.Test;
+import ru.shvedov.model.Authorization;
 
 public class TestAuthorization extends TestBase {
 
@@ -8,7 +9,7 @@ public class TestAuthorization extends TestBase {
 
     @Test
     public void testLoginIN(){
-        loginIn(testLoginWrong);
-        screenshot("testLoginWrong");
+        app.loginIn(testLoginWrong);
+        app.getSubsVoid().screenshot("testLoginWrong");
     }
 }

@@ -1,4 +1,4 @@
-package ru.shvedov;
+package ru.shvedov.model;
 
 public class Authorization {
 
