@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-public class Main {
+public class Main extends TestBaseFunc {
 
     public static void main(String[] args) throws InterruptedException {
          WebDriver driver;
@@ -28,95 +28,77 @@ public class Main {
 
 
         LoginPage loginPage = new LoginPage(driver);
+        Thread.sleep(1000);
         loginPage.setUsernameField("dmShvedov7");
+
         driver.findElement(By.xpath("//div[4]/button")).click();
 
-        WebElement e = (new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.name("passwd"))));
-        e.click();
+        WebElement gf = (new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//button[@type='button'])"))));
+
+        WebElement e = findElementName(driver,10,"passwd");
         e.sendKeys("ditdok-xypDuz-0jabfa");
 
         driver.findElement(By.xpath("//*[@id=\"passp:sign-in\"]")).click();
 
-        WebElement b = (new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.linkText("Диск"))));
+        WebElement b = findElementLinkText(driver,10,"Диск");
         b.click();
 
         //переключаю вкладки между собой
         ArrayList<String> tabs = new ArrayList(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1));
 
-
         //ищу кнопку создать
-        WebElement c = (new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@id='app']/div/div/div[3]/div/div/div/div/span[2]/button"))));
+        WebElement c = findElementXpath(driver,10,"//div[@id='app']/div/div/div[3]/div/div/div/div/span[2]/button");
         c.click();
 
 
         //нажимаю кнопку файл
-        WebElement q = (new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".file-icon_dir_plus"))));
+        WebElement q = findElementCss(driver,10,".file-icon_dir_plus");
         q.click();
 
 
         //нахожу поле где нужно ввести название папки
-        WebElement w = (new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[2]/div/div/div/div/div/div[1]/div/form/span/input"))));
+        WebElement w = findElementXpath(driver,10,"/html/body/div[3]/div[2]/div/div/div/div/div/div[1]/div/form/span/input");
+        Thread.sleep(1000);
 
-        /*
         w.sendKeys(Keys.DELETE);
         w.sendKeys("Тестовая папка");
-         */
+
 
         //Сохраняем новую папку
-        WebElement r = (new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//button[@type='button'])[6]"))));
+        WebElement r = findElementXpath(driver, 10, "(//button[@type='button'])[6]");
         r.click();
 
         //жму на крестик
-        WebElement y = (new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(("" +
-                        "(//button[@type='button'])[9]")))));
+        WebElement y = findElementXpath(driver,10,"//button[@aria-label='Отменить выделение']");
         y.click();
 
         //Ищу файл который надо скопировать
-        WebElement t = (new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(("" +
-                        "//div[@aria-label='Файл для копирования.pages']")))));
-                        // "//div[@id='app']/div/div/div[3]/div[2]/div[2]/div/div/div[3]/div/div[2]/div[2]/div/div")))));
+        WebElement t = findElementXpath(driver,10,"//div[@aria-label='Файл для копирования.pages']");
         System.out.println("Нашел");
         t.click();
 
         //нажимаю копировать
-        WebElement u = (new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(("" +
-                        "(//button[@type='button'])[7]")))));
+        WebElement u = findElementXpath(driver,10,"//button[@aria-label='Копировать']");
         u.click();
 
         //в модальном окне выбираю созданную папку
-        WebElement i = (new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(("" +
-                        "//div[@title='Новая папка']")))));
+        WebElement i = findElementXpath(driver,10,"//div[@title='Тестовая папка']");
         i.click();
 
         //подтверждаю выбор папки
-        WebElement o = (new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(("" +
-                        "/html/body/div[3]/div[2]/div/div/div/div/div/div[2]/button[2]")))));
+        WebElement o = findElementXpath(driver,10,"/html/body/div[3]/div[2]/div/div/div/div/div/div[2]/button[2]");
         o.click();
 
 
         //закрываю крестик
-        y = (new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(("" +
-                        "(//button[@type='button'])[9]")))));
+        y = findElementXpath(driver,10,"//button[@aria-label='Отменить выделение']");
 
         y.click();
 
         //нахожу папку
-        WebElement p = (new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(("" +
-                        "//div[@aria-label='Новая папка']")))));
+        WebElement p = findElementXpath(driver,10,"//div[@aria-label='Тестовая папка']");
         p.click();
 
 
@@ -125,28 +107,20 @@ public class Main {
         act.doubleClick(p).perform();
 
 
-        WebElement n = (new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(("" +
-                        "//h1[@title='Новая папка']")))));
+        WebElement n = findElementXpath(driver,10,"//h1[@title='Тестовая папка']");
         System.out.println("Нашел название папки");
 
         //Thread.sleep(100000);
-        WebElement m = (new WebDriverWait(driver, Duration.ofSeconds(20))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(("" +
-                        "//div[@aria-label='Файл для копирования.pages']")))));
+        WebElement m = findElementXpath(driver,20,"//div[@aria-label='Файл для копирования.pages']");
         System.out.println("Нашел файл");
 
 
         //иконка профиля
-        WebElement h = (new WebDriverWait(driver, Duration.ofSeconds(20))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(("" +
-                        "/html/body/div[1]/div/div/div[1]/div[3]/div/div/a[1]/div/img")))));
+        WebElement h = findElementXpath(driver,20, "/html/body/div[1]/div/div/div[1]/div[3]/div/div/a[1]/div/img");
         h.click();
 
         //выйти из профиля
-        WebElement g = (new WebDriverWait(driver, Duration.ofSeconds(20))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(("" +
-                        "//a[@aria-label='Выйти из аккаунта']")))));
+        WebElement g = findElementXpath(driver, 20, "//a[@aria-label='Выйти из аккаунта']");
         g.click();
 
         driver.quit();
