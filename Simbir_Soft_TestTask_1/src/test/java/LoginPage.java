@@ -8,18 +8,9 @@ import java.time.Duration;
 
 public class LoginPage {
     private WebDriver driver;
-    private String usernameField;
-    private String passwordField;
-    WebElement UsernameField;
 
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
-    }
-
-
-
-    public void setDriver(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -27,7 +18,4 @@ public class LoginPage {
         driver.findElement(By.xpath("//span/input")).sendKeys(username);
     }
 
-    public void setPasswordField(String password) {
-        driver.findElement(By.xpath("//input[@id='passp-field-passwd']")).sendKeys(password);
-    }
 }
