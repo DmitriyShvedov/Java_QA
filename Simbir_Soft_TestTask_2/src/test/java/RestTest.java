@@ -28,17 +28,12 @@ public class RestTest {
         String result = obj.get("items").toString();
 
         JSONParser jsonParser = new JSONParser();
-        JSONArray jsonArray = (JSONArray)jsonParser.parse(result);
+        JSONArray jsonArray = (JSONArray) jsonParser.parse(result);
 
-        for (int i=0; i<jsonArray.size(); i++){
+        for (int i = 0; i < jsonArray.size(); i++) {
             JSONObject object = (JSONObject) jsonArray.get(i);
             System.out.println(object.get("name"));
         }
-
-
-
-
-
 
 
     }
