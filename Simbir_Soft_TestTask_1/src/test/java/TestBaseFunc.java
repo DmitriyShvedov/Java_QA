@@ -1,17 +1,24 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class TestBaseFunc {
 
+    final static String nameFile = "Файл для копирования.pages";
+    final static String urlSute = "https://yandex.ru/";
+    final static String userName = "dmShvedov7";
+    final static String password = "ditdok-xypDuz-0jabfa";
     public static WebElement passwordField;
     public static WebElement linkDisk;
     public static WebElement buttmCreate;
@@ -29,9 +36,8 @@ public class TestBaseFunc {
     public static WebElement buttmProfile;
     public static WebElement quitOfProfile;
     public static WebDriver driver;
+    public static String nameFolder = "Тестовая папка";
 
-
-    @BeforeMethod
     protected static void lounchbrowser (String urlSite){
         System.setProperty("webdriver.chrome.driver", "/Users/dm.shvedov/Desktop/QA/Auto QA/jars and driver/chromedriver");
         driver = new ChromeDriver();
@@ -59,9 +65,120 @@ public class TestBaseFunc {
                 .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(CssValue)));
     }
 
+    public static void signIn(){
+        driver.findElement(By.xpath("//a/div[2]")).click();
+    }
+
+    public static void confirmUserName(){
+        driver.findElement(By.xpath("//div[4]/button")).click();
+    }
+
+    public static void confirmPass(){
+        driver.findElement(By.xpath("//*[@id=\"passp:sign-in\"]")).click();
+    }
+
     @AfterTest
     protected static void closeBrowser(){
         driver.quit();
+    }
+
+    public void sendPassword() {
+        passwordField = findElementName(driver, 10, "passwd");
+        passwordField.sendKeys(password);
+    }
+
+    void outProfile() {
+        //иконка профиля
+        buttmProfile = findElementXpath(driver, 20, "/html/body/div[1]/div/div/div[1]/div[3]/div/div/a[1]/div/img");
+        buttmProfile.click();
+
+        //выйти из профиля
+        quitOfProfile = findElementXpath(driver, 20, "//a[@aria-label='Выйти из аккаунта']");
+        quitOfProfile.click();
+    }
+
+    void checkNameFile() throws IOException {
+        checkNameFile = findElementXpath(driver, 20, "//div[@aria-label='Файл для копирования.pages']");
+        String tempNameFile = checkNameFile.getAttribute("ariaLabel");
+
+        if (Objects.equals(tempNameFile, nameFile)) {
+            System.out.println("Название файла соответвует введенному названию в начале теста");
+        } else
+            throw new IOException();
+    }
+
+    void checkNameFolder() throws IOException {
+        checkNameFolder = findElementXpath(driver, 10, "//h1[@title='Тестовая папка']");
+        String tempNameFolder = checkNameFolder.getAttribute("title");
+
+        if (Objects.equals(tempNameFolder, nameFolder)) {
+            System.out.println("Название папки соответвует введенному названию в начале теста");
+        } else
+            throw new IOException();
+    }
+
+    void insideFolder() {
+        //нахожу папку
+        searchFolder = findElementXpath(driver, 10, "//div[@aria-label='Тестовая папка']");
+        searchFolder.click();
+        //пытаюсь два раза нажать
+        Actions act = new Actions(driver);
+        act.doubleClick(searchFolder).perform();
+    }
+
+    void copyFileOnFolder() {
+        //Ищу файл который надо скопировать
+        fileNameSearch = findElementXpath(driver, 10, "//div[@aria-label='Файл для копирования.pages']");
+        fileNameSearch.click();
+        //нажимаю копировать
+        buttmCopy = findElementXpath(driver, 10, "//button[@aria-label='Копировать']");
+        buttmCopy.click();
+        //в модальном окне выбираю созданную папку
+        fileChoice = findElementXpath(driver, 10, "//div[@title='Тестовая папка']");
+        fileChoice.click();
+        //подтверждаю выбор папки
+        buttmConfirm = findElementXpath(driver, 10, "/html/body/div[3]/div[2]/div/div/div/div/div/div[2]/button[2]");
+        buttmConfirm.click();
+    }
+
+    void clickCancel() {
+        buttmCancel = findElementXpath(driver, 10, "//button[@aria-label='Отменить выделение']");
+        buttmCancel.click();
+    }
+
+    void createFolder() throws InterruptedException {
+        folderNameField = findElementXpath(driver, 10, "/html/body/div[3]/div[2]/div/div/div/div/div/div[1]/div/form/span/input");
+        Thread.sleep(1000);
+        folderNameField.sendKeys(Keys.DELETE);
+        folderNameField.sendKeys(nameFolder);
+        buttmSave = findElementXpath(driver, 10, "(//button[@type='button'])[6]");
+        buttmSave.click();
+    }
+
+    void choiceFolder() {
+        buttmFolder = findElementCss(driver, 10, ".file-icon_dir_plus");
+        buttmFolder.click();
+    }
+
+    void clickCreate() {
+        buttmCreate = findElementXpath(driver, 10, "//div[@id='app']/div/div/div[3]/div/div/div/div/span[2]/button");
+        buttmCreate.click();
+    }
+
+    void sendUserName() throws InterruptedException {
+        LoginPage loginPage = new LoginPage(driver);
+        Thread.sleep(1000);
+        loginPage.setUsernameField(userName);
+    }
+
+    void swichWindow() {
+        ArrayList<String> tabs = new ArrayList(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+    }
+
+    void cliclOnDisk() {
+        linkDisk = findElementLinkText(driver, 10, "Диск");
+        linkDisk.click();
     }
 
 }
