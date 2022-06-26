@@ -13,10 +13,12 @@ import static io.restassured.RestAssured.given;
 
 public class RestTest {
 
+    private final String token = "AQAAAABiaiIbAAgDJA0Ho6YBy0KznrubXoeXxPE";
+
     @Test
     public void getFileAndFolder() throws IOException, ParseException {
         String responceBody = given()
-                .header("Authorization", "OAuth " + "AQAAAABiaiIbAAgDJA0Ho6YBy0KznrubXoeXxPE")
+                .header("Authorization", "OAuth " + token)
                 .baseUri("https://cloud-api.yandex.net/v1/disk/resources/files")
                 .contentType(ContentType.JSON)
                 .when().get()
