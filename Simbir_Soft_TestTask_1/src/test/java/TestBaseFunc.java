@@ -13,7 +13,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class TestBaseFunc {
+public class TestBaseFunc extends Locators {
 
     final static String nameFile = "Файл для копирования.pages";
     final static String urlSute = "https://yandex.ru/";
@@ -65,16 +65,20 @@ public class TestBaseFunc {
                 .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(CssValue)));
     }
 
+    void clickOkCookey(){
+        findElementXpath(driver,10,locCookiOk);
+    }
+
     public static void signIn(){
-        driver.findElement(By.xpath("//a[@target='_self']")).click();
+        driver.findElement(By.xpath(locSigIn)).click();
     }
 
     public static void confirmUserName(){
-        driver.findElement(By.xpath("//div[4]/button")).click();
+        driver.findElement(By.xpath(locConfirmUserName)).click();
     }
 
     public static void confirmPass(){
-        driver.findElement(By.xpath("//*[@id=\"passp:sign-in\"]")).click();
+        driver.findElement(By.xpath(locConfirmPass)).click();
     }
 
     protected static void closeBrowser(){
@@ -82,13 +86,13 @@ public class TestBaseFunc {
     }
 
     public void sendPassword() {
-        passwordField = findElementName(driver, 10, "passwd");
+        passwordField = findElementName(driver, 10, locPassword);
         passwordField.sendKeys(password);
     }
 
     void outProfile() {
         //иконка профиля
-        buttmProfile = findElementXpath(driver, 20, "/html/body/div[1]/div/div/div[1]/div[3]/div/div/a[1]/div/img");
+        buttmProfile = findElementXpath(driver, 20, locProfileIcon);
         buttmProfile.click();
 
         //выйти из профиля

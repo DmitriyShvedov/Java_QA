@@ -13,6 +13,7 @@ public class Test extends TestBaseFunc {
 
     @org.testng.annotations.Test
     public void test() throws InterruptedException, IOException {
+
         signIn();
         sendUserName();
         confirmUserName();
