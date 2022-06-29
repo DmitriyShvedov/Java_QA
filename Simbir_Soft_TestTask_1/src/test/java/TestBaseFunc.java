@@ -96,13 +96,13 @@ public class TestBaseFunc extends Locators {
         buttmProfile.click();
 
         //выйти из профиля
-        quitOfProfile = findElementXpath(driver, 20, "//a[@aria-label='Выйти из аккаунта']");
+        quitOfProfile = findElementXpath(driver, 20, locOutOfProfile);
         quitOfProfile.click();
     }
 
     void checkNameFile() throws IOException {
-        checkNameFile = findElementXpath(driver, 20, "//div[@aria-label='Файл для копирования.pages']");
-        String tempNameFile = checkNameFile.getAttribute("ariaLabel");
+        checkNameFile = findElementXpath(driver, 20, locNameFile);
+        String tempNameFile = checkNameFile.getAttribute(locFindAtribAriaLabel);
 
         if (Objects.equals(tempNameFile, nameFile)) {
             System.out.println("Название файла соответвует введенному названию в начале теста");
@@ -111,8 +111,8 @@ public class TestBaseFunc extends Locators {
     }
 
     void checkNameFolder() throws IOException {
-        checkNameFolder = findElementXpath(driver, 10, "//h1[@title='Тестовая папка']");
-        String tempNameFolder = checkNameFolder.getAttribute("title");
+        checkNameFolder = findElementXpath(driver, 10, locNameFolder);
+        String tempNameFolder = checkNameFolder.getAttribute(locFindAtribTitle);
 
         if (Objects.equals(tempNameFolder, nameFolder)) {
             System.out.println("Название папки соответвует введенному названию в начале теста");
@@ -122,7 +122,7 @@ public class TestBaseFunc extends Locators {
 
     void insideFolder() {
         //нахожу папку
-        searchFolder = findElementXpath(driver, 10, "//div[@aria-label='Тестовая папка']");
+        searchFolder = findElementXpath(driver, 10, locSearchNameFolder);
         searchFolder.click();
         //пытаюсь два раза нажать
         Actions act = new Actions(driver);
