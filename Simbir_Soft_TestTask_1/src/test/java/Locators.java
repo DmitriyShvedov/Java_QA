@@ -15,10 +15,10 @@ public class Locators {
     final static String locChoiceFolder = "//div[@title='Тестовая папка']";
     final static String locConfirmChoiceFolder = "/html/body/div[3]/div[2]/div/div/div/div/div/div[2]/button[2]";
     final static String locClickCancel = "//button[@aria-label='Отменить выделение']";
-    final static String locFolderNameField = "/html/body/div[3]/div[2]/div/div/div/div/div/div[1]/div/form/span/input";
+    final static String locFolderNameField = "//input[@text='Новая папка']";
     final static String locButtmSave = "(//button[@type='button'])[6]";
     final static String locButtmFolder = ".file-icon_dir_plus";
-    final static String locButtmCreateFolder = "//div[@id='app']/div/div/div[3]/div/div/div/div/span[2]/button";
+    final static String locButtmCreateFolder = "//button[@class='Button2 Button2_view_raised Button2_size_m Button2_width_max']";
     final static String locButtmDisk = "Диск";
 
 
