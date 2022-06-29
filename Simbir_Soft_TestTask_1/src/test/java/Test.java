@@ -13,7 +13,6 @@ public class Test extends TestBaseFunc {
 
     @org.testng.annotations.Test
     public void test() throws InterruptedException, IOException {
-
         signIn();
         sendUserName();
         confirmUserName();
@@ -31,6 +30,10 @@ public class Test extends TestBaseFunc {
         checkNameFolder();
         checkNameFile();
         outProfile();
+
+    }
+    @AfterTest
+    void close(){
         closeBrowser();
     }
 }
