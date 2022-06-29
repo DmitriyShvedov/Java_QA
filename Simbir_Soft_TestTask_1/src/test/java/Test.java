@@ -1,10 +1,18 @@
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+
 import java.io.IOException;
 
 public class Test extends TestBaseFunc {
 
+    @BeforeTest
+    public void start(){
+        lounchbrowser(urlSute);
+    }
+
     @org.testng.annotations.Test
     public void test() throws InterruptedException, IOException {
-        lounchbrowser(urlSute);
         signIn();
         sendUserName();
         confirmUserName();

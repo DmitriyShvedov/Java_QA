@@ -66,7 +66,7 @@ public class TestBaseFunc {
     }
 
     public static void signIn(){
-        driver.findElement(By.xpath("//a/div[2]")).click();
+        driver.findElement(By.xpath("//a[@target='_self']")).click();
     }
 
     public static void confirmUserName(){
@@ -77,7 +77,6 @@ public class TestBaseFunc {
         driver.findElement(By.xpath("//*[@id=\"passp:sign-in\"]")).click();
     }
 
-    @AfterTest
     protected static void closeBrowser(){
         driver.quit();
     }
