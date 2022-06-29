@@ -6,7 +6,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterTest;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -131,40 +130,40 @@ public class TestBaseFunc extends Locators {
 
     void copyFileOnFolder() {
         //Ищу файл который надо скопировать
-        fileNameSearch = findElementXpath(driver, 10, "//div[@aria-label='Файл для копирования.pages']");
+        fileNameSearch = findElementXpath(driver, 10, locNameFile);
         fileNameSearch.click();
         //нажимаю копировать
-        buttmCopy = findElementXpath(driver, 10, "//button[@aria-label='Копировать']");
+        buttmCopy = findElementXpath(driver, 10, locButtmCopy);
         buttmCopy.click();
         //в модальном окне выбираю созданную папку
-        fileChoice = findElementXpath(driver, 10, "//div[@title='Тестовая папка']");
+        fileChoice = findElementXpath(driver, 10, locChoiceFolder);
         fileChoice.click();
         //подтверждаю выбор папки
-        buttmConfirm = findElementXpath(driver, 10, "/html/body/div[3]/div[2]/div/div/div/div/div/div[2]/button[2]");
+        buttmConfirm = findElementXpath(driver, 10, locConfirmChoiceFolder);
         buttmConfirm.click();
     }
 
     void clickCancel() {
-        buttmCancel = findElementXpath(driver, 10, "//button[@aria-label='Отменить выделение']");
+        buttmCancel = findElementXpath(driver, 10, locClickCancel);
         buttmCancel.click();
     }
 
     void createFolder() throws InterruptedException {
-        folderNameField = findElementXpath(driver, 10, "/html/body/div[3]/div[2]/div/div/div/div/div/div[1]/div/form/span/input");
+        folderNameField = findElementXpath(driver, 10, locFolderNameField);
         Thread.sleep(1000);
         folderNameField.sendKeys(Keys.DELETE);
         folderNameField.sendKeys(nameFolder);
-        buttmSave = findElementXpath(driver, 10, "(//button[@type='button'])[6]");
+        buttmSave = findElementXpath(driver, 10, locButtmSave);
         buttmSave.click();
     }
 
     void choiceFolder() {
-        buttmFolder = findElementCss(driver, 10, ".file-icon_dir_plus");
+        buttmFolder = findElementCss(driver, 10, locButtmFolder);
         buttmFolder.click();
     }
 
     void clickCreate() {
-        buttmCreate = findElementXpath(driver, 10, "//div[@id='app']/div/div/div[3]/div/div/div/div/span[2]/button");
+        buttmCreate = findElementXpath(driver, 10, locButtmCreateFolder);
         buttmCreate.click();
     }
 
@@ -180,7 +179,7 @@ public class TestBaseFunc extends Locators {
     }
 
     void cliclOnDisk() {
-        linkDisk = findElementLinkText(driver, 10, "Диск");
+        linkDisk = findElementLinkText(driver, 10, locButtmDisk);
         linkDisk.click();
     }
 
