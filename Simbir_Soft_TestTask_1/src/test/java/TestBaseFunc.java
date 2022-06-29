@@ -77,7 +77,7 @@ public class TestBaseFunc extends Locators {
     }
 
     public static void confirmPass(){
-        driver.findElement(By.xpath(locConfirmPass)).click();
+        driver.findElement(By.xpath(locConfirmUserName)).click();
     }
 
     protected static void closeBrowser(){
